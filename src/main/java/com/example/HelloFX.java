@@ -32,7 +32,7 @@ public class HelloFX extends Application {
     secondaryStage.setTitle("Close me");
     secondaryStage.setOnShown((event) -> {
       System.out.println("Stage Shown");
-  });
+    });
     secondaryStage.show();
   }
 
