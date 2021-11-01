@@ -2,6 +2,7 @@ package com.example;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
@@ -14,24 +15,26 @@ public class HelloFX extends Application {
   public void start(Stage primaryStage) {
     String javaVersion = System.getProperty("java.version");
     String javafxVersion = System.getProperty("javafx.version");
-    Label l =
-        new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-    Scene scene = new Scene(new StackPane(l), 640, 480);
+    Label label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion
+        + ". Click to close me!");
+    Scene scene = new Scene(new StackPane(label), 640, 480);
     primaryStage.setScene(scene);
     primaryStage.setTitle("My First JavaFX App");
     primaryStage.initStyle(StageStyle.DECORATED);
-    primaryStage.setFullScreen(true);
+    label.setOnMouseClicked(evt -> {
+      primaryStage.close();
+    });
     primaryStage.show();
 
-    Label l2 = new Label("Close me");
-    Scene scene2 = new Scene(new StackPane(l2), 320, 240);
+    Button button = new Button("Close me");
+    Scene scene2 = new Scene(button, 320, 240);
     Stage secondaryStage = new Stage();
     secondaryStage.setScene(scene2);
     secondaryStage.initOwner(primaryStage);
     secondaryStage.initModality(Modality.WINDOW_MODAL);
     secondaryStage.setTitle("Close me");
-    secondaryStage.setOnShown((event) -> {
-      System.out.println("Stage Shown");
+    button.setOnAction(actionEvent -> {
+      secondaryStage.close();
     });
     secondaryStage.show();
   }
