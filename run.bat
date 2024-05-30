@@ -1,0 +1,1 @@
+java --module-path "C:\Users\Yan Ng\Software\javafx-sdk-17.0.10\lib" --add-modules javafx.controls --add-modules javafx.fxml -jar target\javafx-helloworld-1.0.0.jar
